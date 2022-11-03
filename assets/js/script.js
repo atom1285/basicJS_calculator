@@ -9,19 +9,15 @@ function getResult() {
     switch (operation) {
         case 'add':
             result = number1 + number2;
-            console.log('add', result);
             break;
         case 'sub':
             result = number1 - number2;
-            console.log('sub', result);
             break;
         case 'mul':
             result = number1 * number2;
-            console.log('mul', result);
             break;
         case 'div':
             result = number1 / number2;
-            console.log('div', result);
             break;
     }
 
