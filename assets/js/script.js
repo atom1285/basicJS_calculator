@@ -28,12 +28,33 @@ function getResult() {
 
     document.getElementById('result').value = result;
 
+    $('#result').css('transform', 'scale(1.15)')
+    setTimeout(function () {
+        $('#result'). css('transform', 'scale(1)')
+    }, 200);
+
 }
 
 function Clear() {
-    document.getElementById('num1').value = '';
-    document.getElementById('num2').value = '';
-    document.getElementById('result').value = '';
+
+    const num1 = $('#num1');
+    const num2 = $('#num2');
+    const result = $('#result');
+
+    num1.val('');
+    num2.val('');
+    result.val('');
+
+    num1.toggleClass('cleared');
+    num2.toggleClass('cleared');
+    result.toggleClass('cleared');
+
+    setTimeout(function () {
+        num1.toggleClass('cleared');
+        num2.toggleClass('cleared');
+        result.toggleClass('cleared');
+    }, 300);
+
 }
 
 function tryToAutomaticallyCalcaulate() {
@@ -48,9 +69,14 @@ function tryToAutomaticallyCalcaulate() {
 
 function setOperationClass(operation = document.getElementById('operation_select').value) {
 
-    document.getElementById('operation_select').classList.remove('add', 'sum', 'mul', 'div');
-    document.getElementById('operation_select').classList.add(operation);
+    const operation_select = $('#operation_select');
+    operation_select.removeClass(['add', 'sub', 'mul', 'div']);
+    operation_select.addClass(operation);
 
+    operation_select.css('transform', 'scale(1.15)')
+    setTimeout(function () {
+        operation_select.css('transform', 'scale(1)')
+    }, 200);
 
 }
 
