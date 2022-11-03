@@ -63,7 +63,7 @@ function tryToAutomaticallyCalcaulate() {
         getResult();
     }
     else {
-        $('#result').val() = '';
+        $('#result').val('');
     }
 }
 
