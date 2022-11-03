@@ -1,10 +1,10 @@
 function getResult() {
 
     //*form
-    const number1 = parseFloat(document.getElementById('num1').value);
-    const number2 = parseFloat(document.getElementById('num2').value);
+    const number1 = parseFloat($('#num1').val());
+    const number2 = parseFloat($('#num2').val());
 
-    const operation = document.getElementById('operation_select').value;
+    const operation = $('#operation_select').val();
 
     switch (operation) {
         case 'add':
@@ -26,7 +26,7 @@ function getResult() {
         return;
     }
 
-    document.getElementById('result').value = result;
+    $('#result').val(result);
 
     $('#result').css('transform', 'scale(1.15)')
     setTimeout(function () {
@@ -59,11 +59,11 @@ function Clear() {
 
 function tryToAutomaticallyCalcaulate() {
 
-    if (document.getElementById('num1').value && document.getElementById('num2').value) {
+    if ($('#num1').val() && $('#num2').val()) {
         getResult();
     }
     else {
-        document.getElementById('result').value = '';
+        $('#result').val() = '';
     }
 }
 
@@ -81,7 +81,7 @@ function setOperationClass(operation = document.getElementById('operation_select
 }
 
 function setOperation(operation) {
-    document.getElementById('operation_select').value = operation; 
+    $('#operation_select').val(operation); 
     tryToAutomaticallyCalcaulate();
     setOperationClass(operation);
 }
