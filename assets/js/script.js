@@ -25,67 +25,49 @@ function getResult() {
             break;
     }
 
+    //if result is not a number nothing will return
+    if (isNaN(result)) {
+        return;
+    }
+
     document.getElementById('result').value = result;
 
 }
 
+function Clear() {
+    document.getElementById('num1').value = '';
+    document.getElementById('num2').value = '';
+    document.getElementById('result').value = '';
+}
+
 function tryToAutomaticallyCalcaulate() {
+
     if (document.getElementById('num1').value && document.getElementById('num2').value) {
         getResult();
     }
+    else {
+        document.getElementById('result').value = '';
+    }
 }
 
-function setOperationColor(operation, website_load = false) {
+function setOperationClass(operation = document.getElementById('operation_select').value) {
 
-    if (website_load == true) {
-        operation = document.getElementById('operation_select').value;
-    }
+    document.getElementById('operation_select').classList.remove('add', 'sum', 'mul', 'div');
+    document.getElementById('operation_select').classList.add(operation);
 
-    let color;
-
-    //a switch statement to determine bg color based on operation
-    switch (operation) {
-        case 'add':
-            color = 'limegreen';
-            break;
-        case 'sub':
-            color = 'red';
-            break;
-        case 'mul':
-            color = 'blue';
-            break;
-        case 'div':
-            color = 'yellow';
-            break;
-    }
-
-    document.getElementById('operation_select').style.backgroundColor = color;
 
 }
 
 function setOperation(operation) {
     document.getElementById('operation_select').value = operation; 
     tryToAutomaticallyCalcaulate();
-    setOperationColor(operation);
-}
-
-function setOperationAdd() {
-    setOperation('add');
-}
-
-function setOperationSub() {
-    setOperation('sub');
-}
-
-function setOperationMul() {
-    setOperation('mul');
-}
-
-function setOperationDiv() {
-    setOperation('div');
+    setOperationClass(operation);
 }
 
 //!website refresh
 window.onload = function () {
-    setOperationColor(null, true);
+    setOperationClass();
+
+    document.getElementById('num1').addEventListener('input', tryToAutomaticallyCalcaulate);
+    document.getElementById('num2').addEventListener('input', tryToAutomaticallyCalcaulate);    
 }

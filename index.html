@@ -35,12 +35,12 @@
 
             <div class="buttons pt-3 text-center">
 
-                <button onclick="setOperationAdd()" class="fw-bold btn btn-secondary mx-1"> + </button>
-                <button onclick="setOperationSub()" class="fw-bold btn btn-secondary mx-1"> - </button>
-                <button onclick="setOperationMul()" class="fw-bold btn btn-secondary mx-1"> x </button>
-                <button onclick="setOperationDiv()" class="fw-bold btn btn-secondary mx-1"> : </button>
-                
-                <input type="submit" id="calculate" onclick="getResult()" class="fw-bold btn btn-danger mx-1" value="=">
+                <button onclick="setOperation('add')" class="fw-semibold btn btn-secondary mx-1 add text-black border-0"> + </button>
+                <button onclick="setOperation('sub')" class="fw-semibold btn btn-secondary mx-1 sub text-black border-0"> - </button>
+                <button onclick="setOperation('mul')" class="fw-semibold btn btn-secondary mx-1 mul text-black border-0"> x </button>
+                <button onclick="setOperation('div')" class="fw-semibold btn btn-secondary mx-1 div text-black border-0"> : </button>
+                <!-- <input type="submit" id="calculate" onclick="getResult()" class="fw-bold btn btn-success mx-1" value="="> -->
+                <input type="submit" id="clear" onclick="Clear()" class="fw-bolder btn btn-danger mx-1" value="C">
 
             </div>
 
