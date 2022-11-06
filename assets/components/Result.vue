@@ -4,6 +4,7 @@ export default {
 		return {
 			result: null,
 			grow: false,
+			cleared: false,
 		};
 	},
 	methods: {
@@ -11,9 +12,19 @@ export default {
 			this.result = number;
 
 			this.grow = true;
-			setTimeout(function () {
+			setTimeout(() => {
 				this.grow = false;
 			}, 200);
+		},
+		clear(silent = false) {
+			this.result = null;
+
+			if (silent == false) {
+				this.cleared = true;
+				setTimeout(() => {
+					this.cleared = false;
+				}, 150);
+			}
 		},
 	},
 };
@@ -22,6 +33,7 @@ export default {
 	<input
 		disabled
 		class="result"
+		:class="{ grow: grow, cleared: cleared }"
 		type="text"
 		inputmode="numeric"
 		name=""
@@ -44,9 +56,13 @@ input {
 	background-color: lightslategrey;
 	text-align: center;
 	font-size: 20px;
-	transition: 0.5s;
+	transition: 0.4s;
 }
 .grow {
-	scale: 1.15;
+	scale: 1.15 !important;
+}
+
+.cleared {
+	background-color: rgb(212, 212, 212) !important;
 }
 </style>

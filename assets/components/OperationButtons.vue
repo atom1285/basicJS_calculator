@@ -32,7 +32,7 @@ export default {
 		<input
 			type="submit"
 			id="clear"
-			onclick="Clear()"
+			@click="$emit('clear')"
 			class="fw-bolder btn btn-danger mx-1 btn-op"
 			value="C" />
 	</div>

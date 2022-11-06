@@ -20,6 +20,11 @@ export default {
 		};
 	},
 	methods: {
+		clear() {
+			this.$refs.num1.clear();
+			this.$refs.num2.clear();
+			this.$refs.result.clear();
+		},
 		getResult(number1, number2) {
 			let result;
 
@@ -40,6 +45,7 @@ export default {
 
 			//if result is not a number nothing will return
 			if (isNaN(result)) {
+				this.$refs.result.clear(true);
 				return;
 			}
 
@@ -51,7 +57,7 @@ export default {
 			if (num1 && num2) {
 				this.getResult(parseFloat(num1), parseFloat(num2));
 			} else {
-				$("#result").val("");
+				this.$refs.result.clear(true);
 			}
 		},
 		setOperation(newOperation = this.operation) {
@@ -66,27 +72,31 @@ export default {
 
 <template>
 	<div>
-		<NumberInput numberID="num1" @numberInput="tryToAutomaticallyCalculate()">
+		<NumberInput
+			numberID="num1"
+			ref="num1"
+			@numberInput="tryToAutomaticallyCalculate()">
 		</NumberInput>
 
 		<OperationSign ref="operationSelect"></OperationSign>
 
-		<NumberInput numberID="num2" @numberInput="tryToAutomaticallyCalculate()">
+		<NumberInput
+			numberID="num2"
+			ref="num2"
+			@numberInput="tryToAutomaticallyCalculate()">
 		</NumberInput>
 
 		<div class="equals d-inline-block">=</div>
 
 		<Result ref="result"></Result>
 
-		<OperationButtons @newOperation="setOperation"></OperationButtons>
+		<OperationButtons
+			@newOperation="setOperation"
+			@clear="clear"></OperationButtons>
 	</div>
 </template>
 
 <style>
-.cleared {
-	background-color: rgb(212, 212, 212) !important;
-}
-
 .add {
 	background-color: limegreen !important;
 }

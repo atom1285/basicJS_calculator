@@ -5,7 +5,18 @@ export default {
 		return {
 			num1: null,
 			num2: null,
+			cleared: false,
 		};
+	},
+	methods: {
+		clear() {
+			$(".number_input").val("");
+
+			this.cleared = true;
+			setTimeout(() => {
+				this.cleared = false;
+			}, 150);
+		},
 	},
 };
 </script>
@@ -13,6 +24,7 @@ export default {
 <template>
 	<input
 		class="number_input"
+		:class="{ cleared: cleared }"
 		type="text"
 		inputmode="numeric"
 		name=""
@@ -31,5 +43,8 @@ input {
 	text-align: center;
 	font-size: 20px;
 	transition: 0.5s;
+}
+.cleared {
+	background-color: rgb(212, 212, 212) !important;
 }
 </style>
